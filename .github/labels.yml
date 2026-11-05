@@ -1,0 +1,29 @@
+# type
+- {name: "type:task", color: "0e8a16", description: "Implementation work"}
+- {name: "type:experiment", color: "5319e7", description: "Pre-registered experiment"}
+- {name: "type:bug", color: "d73a4a", description: "Defect"}
+- {name: "type:literature", color: "1d76db", description: "Reading / comparison"}
+- {name: "type:docs", color: "0075ca", description: "Documentation / paper"}
+- {name: "type:chore", color: "cfd3d7", description: "Infra / housekeeping"}
+# area (workstreams)
+- {name: "area:p1-eval", color: "fbca04", description: "Evaluation & infrastructure"}
+- {name: "area:p2-finetune", color: "fbca04", description: "Decoder fine-tuning attack"}
+- {name: "area:p3-image-attack", color: "fbca04", description: "Image & combined attacks"}
+- {name: "area:p4-defense", color: "fbca04", description: "Quality, defenses, analysis"}
+- {name: "area:paper", color: "fbca04", description: "Paper / demo"}
+# priority
+- {name: "prio:P0", color: "b60205", description: "Blocks a milestone"}
+- {name: "prio:P1", color: "d93f0b", description: "Important"}
+- {name: "prio:P2", color: "fef2c0", description: "Nice to have"}
+# scope
+- {name: "stretch", color: "c5def5", description: "Conditional / stretch, must not displace core validation"}
+- {name: "needs-gpu", color: "bfdadc", description: "Requires GPU"}
+- {name: "blocked", color: "000000", description: "Waiting on something"}
+- {name: "claims-risk", color: "e99695", description: "Touches a reported claim: review carefully"}
+# status (triage only; board column is the source of truth)
+- {name: "status:triage", color: "ededed", description: "Needs triage"}
+- {name: "novelty-gate", color: "ff7f50", description: "Decides/affects the novelty claim (proposal section 14)"}
+- {name: "area:p4-pipeline", color: "fbca04", description: "Generation pipeline, Mode B, quality metrics"}
+- {name: "tier:1", color: "0e8a16", description: "Must (proposal tiers)"}
+- {name: "tier:2", color: "fbca04", description: "Should"}
+- {name: "tier:3", color: "c5def5", description: "Could"}

@@ -1,0 +1,14 @@
+name: Literature item
+description: Paper to read / compare
+labels: ["type:literature", "status:triage"]
+body:
+  - type: input
+    id: ref
+    attributes: {label: Citation + link}
+    validations: {required: true}
+  - type: dropdown
+    id: cat
+    attributes: {label: Category, options: [Baseline, Supporting, Counterpoint, Alternative, Challenge/novelty risk]}
+  - type: textarea
+    id: why
+    attributes: {label: Why it matters to D1/D2/D3, description: "Add a row to docs/literature/matrix.md when done"}

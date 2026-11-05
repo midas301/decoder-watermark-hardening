@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wmharden"
+version = "0.1.0"
+description = "Decoder-level image watermark robustness evaluation and attack-aware hardening"
+requires-python = ">=3.10"
+dependencies = [
+  "torch", "torchvision", "diffusers", "transformers",
+  "numpy", "pandas", "scipy", "pillow", "pyyaml",
+  "scikit-image", "lpips", "torch-fidelity", "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "pre-commit"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

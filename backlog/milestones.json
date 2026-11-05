@@ -1,0 +1,30 @@
+[
+  {
+    "title": "N Novelty gate (parallel, recheck monthly)",
+    "description": "Proposal section 14 checks. Outcome decides the lead contribution (2x2 interaction vs proxy-fidelity/held-out generalization)."
+  },
+  {
+    "title": "M0 Repo setup & Review-2 import",
+    "description": "Scaffolding and traceable import of Review-2 pilot work."
+  },
+  {
+    "title": "M1 Phase 1: Embedding (Stable Signature on SD2.1)",
+    "description": "Reproduce and re-implement watermark embedding: message, extractor, decoder fine-tuning, checkpoints, pipelines. No novelty claimed."
+  },
+  {
+    "title": "M2 Phase 2: Detection & FPR audit",
+    "description": "Detector, calibrated thresholds, >=10k-negative FPR audit, metrics. No novelty claimed; RQ5 lives here."
+  },
+  {
+    "title": "M3 Phase 3: Attacks (image + weight)",
+    "description": "Image-space and weight-space attack suite with cost curves for D0."
+  },
+  {
+    "title": "M4 Phase 4: Defenses D0-D3 & 2x2 study",
+    "description": "D1/D2/D3 with 3 seeds and matched compute; interaction analysis."
+  },
+  {
+    "title": "M5 Mode B, extensions, write-up & release",
+    "description": "Mode B, adaptive/held-out extensions, paper, toolkit release."
+  }
+]

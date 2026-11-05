@@ -1,0 +1,6 @@
+n_bits: 48
+target_fpr: 1.0e-3          # primary; also report 1.0e-4
+threshold: null             # set by calibration; do NOT hard-code
+negatives:
+  min_count: 10000
+  sources: [sd_clean_generations, real_photos]

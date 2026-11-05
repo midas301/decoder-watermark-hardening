@@ -1,0 +1,13 @@
+# Vanilla Stable Signature (D0). Fill TODOs after reproducing the reference recipe.
+seed: 0
+base_model: stabilityai/stable-diffusion-2-1
+vae_revision: TODO_COMMIT_HASH
+n_bits: 48
+steps: 1000
+batch_size: 4
+lr: 1.0e-4
+lambda_msg: 1.0
+lambda_perc: 0.2
+augmentations: [crop, resize, jpeg, brightness]
+train_data: TODO
+output_dir: results/embed/d0_seed0

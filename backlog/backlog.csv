@@ -1,0 +1,176 @@
+id,milestone,labels,assignee_key,status,title,body
+B001,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P0;novelty-gate;tier:1,P4,todo,Check 1: joint image-space + weight-space evaluations of decoder-level watermarks,"Search for any work evaluating a decoder-level watermark against both fine-tuning removal and image regeneration/inpainting. Read SleeperMark in full (attack list, what it does not measure).
+
+- [ ] Search log (queries, venues, dates) in docs/NOVELTY.md
+- [ ] SleeperMark gap table filled"
+B002,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P0;novelty-gate;tier:1,P3,todo,"Check 2: newer decoder-level work (CVPR/ICLR/NeurIPS 2025-26, arXiv)","Include follow-ups to RoboSignature and Hu et al.; LambdaMark and similar.
+
+- [ ] Candidates logged in docs/literature/matrix.md"
+B003,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P0;novelty-gate,P2,todo,"Check 3: read CAT, AdvMark, Lukas et al. (ICLR'24) in full","Make sure our extension protocols are distinct.
+
+- [ ] One-paragraph 'how we differ' each"
+B004,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P1;novelty-gate,P3,todo,Check 4: W-Bench exact local-editing coverage,"Do not claim inpainting as a gap unless confirmed.
+
+- [ ] Attack list extracted"
+B005,"N Novelty gate (parallel, recheck monthly)",type:experiment;area:p2-finetune;prio:P0;novelty-gate;needs-gpu,P2,todo,Check 5: run RoboSignature code and test against Hu et al.'s stronger attack,"Verify before building D2 on it.
+
+- [ ] Reproduction notes
+- [ ] Verdict: build on / reimplement / drop"
+B006,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P1;novelty-gate,P1,todo,Check 6: precedent for tamper-resistance-integral-style metrics in vision watermarking,"
+
+- [ ] Search log"
+B007,"N Novelty gate (parallel, recheck monthly)",type:literature;area:p4-pipeline;prio:P1;novelty-gate,P4,todo,Check 7: forgery and encode-decode (Mode B) treatment in literature,"
+
+- [ ] Notes in docs/NOVELTY.md"
+B008,"N Novelty gate (parallel, recheck monthly)",type:docs;area:p4-pipeline;prio:P0;novelty-gate;claims-risk,P1,todo,DECISION: lead contribution after checks 1-2 (go / pivot),"Per proposal: if a paper already does the controlled image-vs-weight interaction study, pivot to proxy fidelity + held-out generalization (RQ4). Record as ADR with supervisor sign-off.
+
+- [ ] ADR written
+- [ ] Guide agrees
+- [ ] Milestones M3-M5 re-scoped if pivot"
+B009,"N Novelty gate (parallel, recheck monthly)",type:chore;area:p4-pipeline;prio:P2;novelty-gate,P1,todo,Monthly re-run of novelty checks (calendar reminder),"Scooping risk in a fast-moving area.
+
+- [ ] Recurring reminder set"
+B010,M0 Repo setup & Review-2 import,type:chore;area:p1-eval;prio:P0;tier:1,P1,done,"Create repo scaffold, CI, templates, labels","
+
+- [x] CI on main"
+B011,M0 Repo setup & Review-2 import,type:chore;area:p1-eval;prio:P0;tier:1,P1,todo,Configure branch protection on main,"
+
+- [ ] PR + 1 approval + CI required"
+B012,M0 Repo setup & Review-2 import,type:chore;area:p1-eval;prio:P1,P1,todo,Import Review-2 PersonN folders into legacy/,"Strip weights, keep traceability.
+
+- [ ] Folders committed, none >2MB
+- [ ] Removed checkpoint hashes in data/README.md"
+B013,M0 Repo setup & Review-2 import,type:chore;area:p1-eval;prio:P1,P1,todo,Shared storage + data manifest,"
+
+- [ ] data/README.md filled with paths and SHA-256"
+B014,M0 Repo setup & Review-2 import,type:chore;area:p1-eval;prio:P0;needs-gpu;tier:1,P1,todo,GPU access + pinned environment,"Pilot ran CPU only; embedding and diffusion attacks need GPU.
+
+- [ ] Lockfile / container
+- [ ] Compute budget per milestone"
+B015,M0 Repo setup & Review-2 import,type:docs;area:p1-eval;prio:P1,P1,todo,Confirm title change with guide (ADR-002),"
+
+- [ ] Written approval"
+B016,M0 Repo setup & Review-2 import,type:experiment;area:p4-defense;prio:P1;claims-risk,P4,done,Review-2 pilot grids (D0 grid; D0_matched/D1/D2/D3),"Delivered on 16-image reconstruction pilot.
+
+- [x] Summaries in legacy/"
+B017,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p2-finetune;prio:P0;tier:1,P2,todo,Implement message/key generation and storage,"Seeded 48-bit message, saved with run metadata.
+
+- [ ] wmharden/watermark/message.py
+- [ ] Unit tests"
+B018,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p2-finetune;prio:P0;tier:1;needs-gpu,P2,todo,Obtain/pretrain watermark extractor,"Use released Stable Signature extractor or pretrain per recipe; pin hashes.
+
+- [ ] extractor.py loads extractor, outputs 48 logits
+- [ ] Bit accuracy on clean-watermarked sanity batch"
+B019,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p2-finetune;prio:P0;tier:1;needs-gpu,P2,todo,Implement decoder fine-tuning (embedding) with message + perceptual loss,"Stable Signature recipe: L = BCE(message) + lambda * LPIPS vs original decoder. Re-implement cleanly, compare to released code.
+
+- [ ] embed.py implements fine_tune_decoder
+- [ ] Config-driven (configs/embed_d0.yaml)
+- [ ] Training log with seed, steps, wall time"
+B020,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p2-finetune;prio:P0;tier:1,P2,todo,"Checkpoint export/reload with provenance (SHA-256, git SHA, config)","
+
+- [ ] checkpoint.py
+- [ ] Reload test reproduces identical outputs"
+B021,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p4-pipeline;prio:P0;tier:1;needs-gpu,P4,todo,Mode A pipeline: SD2.1 text-to-image with watermarked decoder,"
+
+- [ ] pipeline.py generates from fixed prompt+latent set
+- [ ] Clean decoder and watermarked decoder both selectable"
+B022,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p4-pipeline;prio:P1;tier:2;needs-gpu,P4,todo,Mode B pipeline: encode real image -> watermarked decode (+ clean round trip),"Fix size or tiling and report it.
+
+- [ ] pipeline.py mode_b()
+- [ ] Clean round-trip baseline path"
+B023,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:experiment;area:p2-finetune;prio:P0;tier:1;needs-gpu;claims-risk,P2,todo,Reproduce reference results: baseline bit accuracy and image quality,"Embedding works if watermarked images are detected near-perfectly with small quality loss.
+
+- [ ] Bit accuracy on clean (no attack) images
+- [ ] PSNR/SSIM/LPIPS/FID vs clean decoder
+- [ ] Compared to published Stable Signature numbers"
+B024,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p4-pipeline;prio:P1,P4,todo,"Quality metrics module (PSNR, SSIM, LPIPS, FID, CLIP score)","
+
+- [ ] wmharden/metrics
+- [ ] Tests on known image pairs"
+B025,M1 Phase 1: Embedding (Stable Signature on SD2.1),type:task;area:p1-eval;prio:P1,P1,todo,"Run-record schema (config hash, seed, revisions, device, wall time)","Every run writes provenance JSON.
+
+- [ ] eval/record.py
+- [ ] Used by embed and detect"
+B026,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1;claims-risk,P3,done,"Detection statistics: two-sided binomial FPR, thresholds, Clopper-Pearson","Implemented in wmharden/detect/stats.py with tests.
+
+- [x] stats.py + tests"
+B027,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1,P3,todo,Implement Detector (extractor -> bits -> score -> decision),"
+
+- [ ] detector.py extract_bits wired to extractor
+- [ ] Batch inference, GPU/CPU"
+B028,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1;claims-risk,P3,todo,Fix threshold: pilot used 35/48 (theoretical FPR ~0.21%); recompute for target FPR,"At 48 bits: 36 gives ~0.07%, 37 (~0.77 bit acc) ~0.022%, 38 ~0.006%. Pilot threshold 35 does not meet 0.1%.
+
+- [ ] ADR with chosen threshold and rationale
+- [ ] Re-score pilot results at new threshold"
+B029,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1,P3,todo,"Detection metrics: TPR@0.1%/0.01% FPR, AUROC, bit accuracy, BER","
+
+- [ ] metrics.py with tests"
+B030,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1,P1,todo,"Assemble >=10,000 negatives (clean SD generations + real photos)","Needed for stable FPR at 1e-3; 0 FP in 3,000 only bounds at 0.1%.
+
+- [ ] Manifest and hashes
+- [ ] Disjoint from attacker/defender training data"
+B031,M2 Phase 2: Detection & FPR audit,type:experiment;area:p1-eval;prio:P0;tier:1;claims-risk,P3,todo,"FPR audit (RQ5): empirical vs theoretical, with Clopper-Pearson CI","
+
+- [ ] Report in reports/fpr_audit/
+- [ ] Real vs generated negatives reported separately"
+B032,M2 Phase 2: Detection & FPR audit,type:task;area:p1-eval;prio:P0;tier:1;claims-risk,P1,todo,"Freeze splits and pre-register cutoffs (50% TPR, quality budgets, utility margins)","Fix before running defense experiments.
+
+- [ ] PROTOCOL.md v2
+- [ ] Split files hashed"
+B033,M3 Phase 3: Attacks (image + weight),type:task;area:p3-image-attack;prio:P0;tier:1,P3,todo,"Image-attack suite: JPEG, blur, noise, crop, resize, brightness/contrast","4-5 strengths each, on ImageAttack interface.
+
+- [ ] attacks/image/classical.py + tests"
+B034,M3 Phase 3: Attacks (image + weight),type:task;area:p3-image-attack;prio:P0;tier:1;needs-gpu,P3,todo,VAE and diffusion regeneration (1-3 passes),"
+
+- [ ] attacks/image/regen.py
+- [ ] Strength sweeps, ~500 images/setting"
+B035,M3 Phase 3: Attacks (image + weight),type:task;area:p3-image-attack;prio:P1;tier:2;needs-gpu,P3,todo,Inpainting / local-edit attack (mask 10-70%),"
+
+- [ ] attacks/image/inpaint.py"
+B036,M3 Phase 3: Attacks (image + weight),type:task;area:p1-eval;prio:P0;tier:1,P1,todo,"Cost-curve framework: Q (image), E and TR integral (weight), censoring","Separate axes, never one score.
+
+- [ ] analysis/cost.py with tests including censored cases"
+B037,M3 Phase 3: Attacks (image + weight),type:task;area:p2-finetune;prio:P0;tier:1;needs-gpu,P2,todo,"Weight attacks: model purification, Hu et al. fine-tune, adversarial fine-tune","Record samples, unique images, LR, schedule, GPU time.
+
+- [ ] attacks/finetune/*.py on WeightAttack interface"
+B038,M3 Phase 3: Attacks (image + weight),type:experiment;area:p4-defense;prio:P0;tier:1;claims-risk;needs-gpu,P4,todo,D0 baseline cost curves in both spaces (RQ1),"
+
+- [ ] Q and E tables with CIs"
+B039,M3 Phase 3: Attacks (image + weight),type:task;area:p3-image-attack;prio:P2;tier:3,P3,todo,Stretch: guided white-box removal; clean-VAE round-trip attack (Mode B),"
+
+- [ ] Implemented"
+B040,M4 Phase 4: Defenses D0-D3 & 2x2 study,type:task;area:p4-defense;prio:P0;tier:1;needs-gpu,P4,todo,D0 compute-matched control,"Same number of steps on the original objective.
+
+- [ ] Config + run"
+B041,M4 Phase 4: Defenses D0-D3 & 2x2 study,type:task;area:p4-defense;prio:P0;tier:1;needs-gpu,P4,todo,D1 image-space defense with proxies; test proxy fidelity,"
+
+- [ ] defenses/d1.py
+- [ ] Proxy vs real regeneration/inpainting comparison"
+B042,M4 Phase 4: Defenses D0-D3 & 2x2 study,type:task;area:p4-defense;prio:P0;tier:1;needs-gpu,P4,todo,"D2 weight-space (tamper-resistant meta-training, first-order)","Depends on novelty check 5.
+
+- [ ] defenses/d2.py
+- [ ] Fallback to adversarial fine-tune augmentation documented"
+B043,M4 Phase 4: Defenses D0-D3 & 2x2 study,type:task;area:p4-defense;prio:P0;tier:1;needs-gpu,P4,todo,D3 = D1+D2 with swept weighting; matched compute,"
+
+- [ ] defenses/d3.py"
+B044,M4 Phase 4: Defenses D0-D3 & 2x2 study,type:experiment;area:p4-defense;prio:P0;tier:1;claims-risk;needs-gpu,P4,todo,"2x2 interaction study, 3 seeds (RQ2)","
+
+- [ ] Cost multipliers M with CIs
+- [ ] Pareto front vs quality margin"
+B045,"M5 Mode B, extensions, write-up & release",type:experiment;area:p3-image-attack;prio:P1;tier:2,P3,todo,"Mode B evaluation (round-trip quality, image attacks, clean-VAE)","Demote to demo if time is short.
+
+- [ ] Report"
+B046,"M5 Mode B, extensions, write-up & release",type:experiment;area:p4-defense;prio:P2;tier:3;stretch,P4,todo,"Adaptive K=3 rounds and leave-one-family-out matrix (RQ3, RQ4)","Only after Tier 1.
+
+- [ ] Robustness matrix"
+B047,"M5 Mode B, extensions, write-up & release",type:docs;area:paper;prio:P0;tier:1,P1,todo,Reproducibility package and toolkit release,"
+
+- [ ] One-command reproduction
+- [ ] Provenance JSON per run"
+B048,"M5 Mode B, extensions, write-up & release",type:docs;area:paper;prio:P0;tier:1,P3,todo,Write-up (workshop-style paper),"Claims per proposal wording rules.
+
+- [ ] Draft in paper/
+- [ ] Guide review"
+B049,"M5 Mode B, extensions, write-up & release",type:docs;area:paper;prio:P1,P1,todo,Final demo,"
+
+- [ ] Script and recorded fallback"

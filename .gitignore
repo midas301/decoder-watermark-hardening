@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+# data & weights
+data/*
+!data/README.md
+!data/.gitkeep
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npy
+*.npz
+# raw results (curated summaries go in reports/)
+results/*
+!results/.gitkeep
+# misc
+.DS_Store
+*.log
+wandb/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
