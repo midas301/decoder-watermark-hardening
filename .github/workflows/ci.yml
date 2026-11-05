@@ -7,7 +7,7 @@ jobs:
   lint-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with: {python-version: "3.11", cache: pip}
       - name: Install (CPU torch, light deps for CI)
@@ -21,7 +21,7 @@ jobs:
   no-large-files:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Block weights and big files
         run: |
           if git ls-files | grep -E '\.(pt|pth|ckpt|safetensors|npy|npz)$'; then echo "weights tracked"; exit 1; fi
