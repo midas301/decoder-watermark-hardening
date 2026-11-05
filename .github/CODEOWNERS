@@ -1,9 +1,9 @@
-# TODO: replace with real GitHub usernames
-*                                @atul-gh @kanak-gh @nuthan-gh @samarth-gh
+# TODO: replace with real GitHub usernames for samarth and atul
+*                                @atul-gh @midas301 @nuthanbaskar @samarth-gh
 /src/wmharden/eval/              @atul-gh
-/src/wmharden/watermark/embed.py @kanak-gh
-/src/wmharden/watermark/         @kanak-gh @samarth-gh
-/src/wmharden/detect/            @nuthan-gh
-/src/wmharden/attacks/           @nuthan-gh @kanak-gh
+/src/wmharden/watermark/embed.py @midas301
+/src/wmharden/watermark/         @midas301 @samarth-gh
+/src/wmharden/detect/            @nuthanbaskar
+/src/wmharden/attacks/           @nuthanbaskar @midas301
 /src/wmharden/defenses/          @samarth-gh
-/docs/PROTOCOL.md                @atul-gh @nuthan-gh
+/docs/PROTOCOL.md                @atul-gh @nuthanbaskar
